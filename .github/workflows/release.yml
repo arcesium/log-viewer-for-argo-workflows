@@ -1,0 +1,52 @@
+name: Release Extensions
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    name: Build and Release Extensions
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+      contents: write
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set Up Dependencies
+      run: sudo apt-get update && sudo apt-get install -y zip
+
+    - name: Run Build Script
+      run: |
+        chmod +x ./generate_plugins.sh
+        ./generate_plugins.sh
+
+    - name: Move Zipped Files to Root
+      run: |
+        cp build/chrome/v3.zip chrome.zip
+        cp build/firefox/v2.zip firefox.zip
+
+    - name: Create GitHub Release
+      uses: ncipollo/release-action@v1
+      with:
+        tag: ${{ github.ref_name }}
+        name: ${{ github.ref_name }}
+        body: |
+          Download pre-built extensions for your browser:
+          - Chrome/Chromium/Microsoft Edge: [chrome.zip](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/chrome.zip)
+          - Firefox: [firefox.zip](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/firefox.zip)
+
+          Manual Installation steps:
+          - Unzip the downloaded folder in some directory. (e.g. `chrome.zip` -> `C:\Users\username\Desktop\chrome`)
+
+          Now follow the steps for your browser:
+          - [Mozilla Firefox](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/)
+          - [Google Chrome/Chromium/Microsoft Edge](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)
+        artifacts: |
+          chrome.zip
+          firefox.zip
