@@ -1,0 +1,92 @@
+<!-- Copyright (c) 2024 Arcesium LLC. Licensed under the BSD 3-Clause License. -->
+
+<div id="logFooter">
+  <div id="resizeHandle">
+    <div class=""></div>
+    <div class="handle">···</div>
+    <div id="dismissFooterButton" class="tooltip toolbar-button">
+      <span class="tooltiptext">Dismiss Footer</span>
+      <i class="fas fa-caret-down"></i>
+    </div>
+  </div>
+  <div id="tabBarContainer">
+    <div id="tabBar">
+      <div class="log-viewer-tab log-viewer-tab-active log-tab">
+        <div class="log-viewer-tab-name" title="Getting Started">
+          <i class="status-icon fa fa-ghost unknown" title="Status: Unknown"></i>
+          Getting Started
+        </div>
+
+        <div class="log-viewer-tab-icon"><i class="fa fa-times"></i></div>
+      </div>
+
+      <!-- Using Font Awesome Icons here, which are included in Argo Workflows UI (checked at v3.4.7) -->
+      <div class="log-viewer-tab log-tab tab-template" style="display: none">
+        <i class="status-icon fa fa-ghost unknown" title="Status: Unknown"></i>
+        <i class="status-icon fa fa-cog fa-spin running" title="In progress"></i>
+        <i class="status-icon fa fa-exclamation-triangle failed" title="Failed"></i>
+        <i class="status-icon fa fa-exclamation-circle pending" title="Pending"></i>
+        <i class="status-icon fa fa-check-circle succeeded" title="Successful"></i>
+        <div class="log-viewer-tab-name" title="sample-tab">sample-tab</div>
+        <div class="log-viewer-tab-icon"><i class="fa fa-times"></i></div>
+      </div>
+    </div>
+    <div class="log-viewer-tab-icon-container">
+      <div id="deleteAllTabsButton" class="tooltip toolbar-button">
+        <span class="tooltiptext">Close all inactive tabs</span>
+        <i class="fa fa-trash"></i>
+      </div>
+      <div id="recoverTabsButton" class="tooltip toolbar-button">
+        <span class="tooltiptext">Restore last session</span>
+        <i class="fas fa-undo"></i>
+      </div>
+      <button id="fetchLogsButton" class="toolbar-button">
+        Fetch logs
+        <i class="fas fa-forward" id="fetchLogsIcon"></i>
+      </button>
+    </div>
+  </div>
+  <div id="actionBar">
+    <div class="status-container">
+      <div id="liveStatus">
+        Status:
+        <i class="fa fa-cog fa-spin"></i>
+        LISTENING...
+      </div>
+
+      <div id="idleStatus">
+        Status:
+        <i class="fa fa-circle"></i>
+        IDLE
+      </div>
+    </div>
+    <div class="action-bar-end">
+      <div class="dropdown-option" title="">
+        Auto scroll<input type="checkbox" class="switch" id="autoScrollSwitch" />
+      </div>
+      <div class="dropdown-option" title="">
+        Wrap lines<input type="checkbox" class="switch" id="wordWrapSwitch" />
+      </div>
+      <div id="downloadButton" class="tooltip icon-button">
+        <span class="tooltiptext">Download as file</span>
+        <i class="fa fa-download"></i>
+      </div>
+    </div>
+  </div>
+
+  <textarea
+    id="textarea"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    spellcheck="false"
+  ></textarea>
+
+  <div class="footer-content">
+    <p>Auto-monitor:</p>
+    <input type="checkbox" class="switch" id="autoListenerSwitch" style="margin-right: 10px" />
+
+    <input type="text" id="workflowPattern" placeholder="Workflow Name Prefix" />
+  </div>
+</div>
+<div id="snackbar">...</div>
