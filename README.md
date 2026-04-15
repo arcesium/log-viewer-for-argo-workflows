@@ -86,11 +86,14 @@ Logs now persist across page navigation, workflow completion, and even browser r
 
 ## Installation
 
-### From public stores 
+### From Public Stores
 
-The extension is not published yet on public browser addon repositories. Please use one of the manual installation methods specified below.
+Install directly from official stores:
 
-### Download and install
+* Firefox: [https://addons.mozilla.org/en-GB/firefox/addon/log-viewer-for-argo-workflows/](https://addons.mozilla.org/en-GB/firefox/addon/log-viewer-for-argo-workflows/)
+* Chrome: [https://chromewebstore.google.com/detail/log-viewer-for-argo-workf/cfhckecoelooagejlbpbmhbhhhlcooal](https://chromewebstore.google.com/detail/log-viewer-for-argo-workf/cfhckecoelooagejlbpbmhbhhhlcooal)
+
+### Download and install manually
 
 You can download the latest release for your browser from the [releases](https://github.com/arcesium/log-viewer-for-argo-workflows/releases/latest) section.
 
